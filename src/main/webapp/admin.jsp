@@ -1,0 +1,243 @@
+<%@page import="com.eazydeals.entities.Message"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@page errorPage="error_exception.jsp"%>
+<%
+Admin activeAdmin = (Admin) session.getAttribute("activeAdmin");
+if (activeAdmin == null) {
+	Message message = new Message("Bạn chưa đăng nhập! Vui lòng đăng nhập trước!!", "error", "alert-danger");
+	session.setAttribute("message", message);
+	response.sendRedirect("adminlogin.jsp");
+	return;
+}
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<!--  <meta charset="UTF-8">-->
+<title>Trang Quản Trị</title>
+<%@include file="Components/common_css_js.jsp"%>
+<style type="text/css">
+.cus-active {
+	background-color: #e6eefa !important;
+	width: 100%;
+}
+
+.list-btn {
+	font-size: 18px !important;
+}
+
+.list-btn:hover {
+	color: #2874f0 !important;
+}
+
+.no-border {
+	border: 0;
+	box-shadow: none;
+}
+
+a {
+	text-decoration: none;
+}
+</style>
+</head>
+<body>
+	<!--navbar -->
+	<%@include file="Components/navbarAdmin.jsp"%>
+
+	<!--admin dashboard -->
+	<div class="container-fluid py-4 px-3">
+		<%@include file="Components/alert_message.jsp"%>
+		<div class="row">
+			<div class="container text-center" id="details">
+				<img src="Images/admin.png" style="max-width: 180px;"
+					class="img-fluid">
+				<h3>
+					Chào mừng "<%=activeAdmin.getName()%>"
+				</h3>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row px-3 py-3">
+				<div class="col-md-4">
+					<a href="display_category.jsp">
+						<div class="card text-bg-light mb-3 text-center">
+							<div class="card-body">
+								<img src="Images/categories.png" style="max-width: 80px;"
+									class="img-fluid">
+								<h4 class="card-title mt-3">Danh Mục</h4>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="col-md-4">
+					<a href="display_products.jsp">
+						<div class="card text-bg-light mb-3 text-center">
+							<div class="card-body">
+								<img src="Images/products.png" style="max-width: 80px;"
+									class="img-fluid">
+								<h4 class="card-title mt-3">Sản Phẩm</h4>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="col-md-4">
+					<a href="display_orders.jsp">
+						<div class="card text-bg-light mb-3 text-center">
+							<div class="card-body">
+								<img src="Images/order.png" style="max-width: 80px;"
+									class="img-fluid">
+								<h4 class="card-title mt-3">Đơn Hàng</h4>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row px-3">
+				<div class="col-md-4 offset-md-2">
+					<a href="display_users.jsp">
+						<div class="card text-bg-light mb-3 text-center">
+							<div class="card-body">
+								<img src="Images/users.png" style="max-width: 80px;"
+									class="img-fluid">
+								<h4 class="card-title mt-3">Người Dùng</h4>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="col-md-4">
+					<a href="display_admin.jsp">
+						<div class="card text-bg-light mb-3 text-center">
+							<div class="card-body">
+								<img src="Images/add-admin.png" style="max-width: 80px;"
+									class="img-fluid">
+								<h4 class="card-title mt-3">Quản Trị Viên</h4>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--end-->
+
+	<!-- add category modal-->
+	<div class="modal fade" id="add-category" tabindex="-1"
+		aria-labelledby="addCategoryModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="addCategoryModalLabel">Thêm
+						Danh Mục</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<form action="AddOperationServlet" method="post"
+					enctype="multipart/form-data">
+					<div class="modal-body">
+						<input type="hidden" name="operation" value="addCategory">
+
+						<div class="mb-3">
+							<label class="form-label"><b>Tên Danh Mục</b></label> <input
+								type="text" name="category_name"
+								placeholder="Nhập tên danh mục" class="form-control" required>
+						</div>
+						<div class="mb-3">
+							<label for="formFile" class="form-label"><b>Hình Ảnh Danh Mục</b></label> <input class="form-control" type="file"
+								name="category_img" id="formFile">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-bs-dismiss="modal">Đóng</button>
+						<button type="submit" class="btn btn-primary me-3">Thêm
+							Danh Mục</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- end of modal -->
+
+	<!-- add product modal-->
+	<div class="modal fade" id="add-product" tabindex="-1"
+		aria-labelledby="addProductModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="addProductModalLabel">Thêm
+						Sản Phẩm</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<form action="AddOperationServlet" method="post"
+					name="addProductForm" enctype="multipart/form-data">
+					<div class="modal-body">
+						<input type="hidden" name="operation" value="addProduct">
+						<div>
+							<label class="form-label"><b>Tên Sản Phẩm</b></label> <input
+								type="text" name="name" placeholder="Nhập tên sản phẩm"
+								class="form-control" required>
+						</div>
+						<div class="mb-2">
+							<label class="form-label"><b>Mô Tả Sản Phẩm</b></label>
+							<textarea class="form-control" name="description" rows="4"
+								placeholder="Nhập mô tả sản phẩm"></textarea>
+						</div>
+						<div class="row">
+							<div class="col-md-6 mb-2">
+								<label class="form-label"><b>Giá Đơn Vị</b></label> <input
+									type="number" name="price" placeholder="Nhập giá"
+									class="form-control" required>
+							</div>
+							<div class="col-md-6 mb-2">
+								<label class="form-label"><b>Phần Trăm Giảm Giá</b></label> <input
+									type="number" name="discount" onblur="validate()"
+									placeholder="Nhập giảm giá nếu có" class="form-control">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 mb-2">
+								<label class="form-label"><b>Số Lượng Sản Phẩm</b></label> <input
+									type="number" name="quantity"
+									placeholder="Nhập số lượng sản phẩm" class="form-control">
+							</div>
+							<div class="col-md-6 mb-2">
+								<label class="form-label"><b>Chọn Danh Mục</b></label> <select
+									name="categoryType" class="form-control">
+									<option value="0">--Chọn Danh Mục--</option>
+									<%
+									for (Category c : categoryList) {
+									%>
+									<option value="<%=c.getCategoryId()%>">
+										<%=c.getCategoryName()%></option>
+									<%
+									}
+									%>
+								</select>
+							</div>
+						</div>
+						<div class="mb-2">
+							<label for="formFile" class="form-label"><b>Hình Ảnh Sản Phẩm</b></label> <input
+								class="form-control" type="file" name="Product_img"
+								id="formFile">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-bs-dismiss="modal">Đóng</button>
+						<button type="submit" class="btn btn-primary me-3">Thêm
+							Sản Phẩm</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- end of modal -->
+
+	
+	
+</body>
+</html>
