@@ -135,7 +135,7 @@ List<Category> categoryList = catDao.getAllCategories();
 			style="padding: 0px 150px;">
 			<div class="d-flex align-items-center">
 				<a href="mailto:support@sapo.vn" class="text-white mr-3"> <i
-					class="fas fa-envelope"></i> support@sapo.vn
+					class="fas fa-envelope"></i>  electronics@gmail.com
 				</a> <a href="tel:19006750" class="text-white"> <i
 					class="fas fa-phone"></i> 1900 6750
 				</a>
@@ -167,12 +167,14 @@ List<Category> categoryList = catDao.getAllCategories();
 		<!-- Main Navbar -->
 		<nav class="navbar navbar-expand-lg navbar-dark bg-secondary"
 			style="padding: 20px 150px;">
-			<a class="navbar-brand" href="#">BETSHOP</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarNav" aria-controls="navbarNav"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+			<a class="navbar-brand" href="admin.jsp"><i
+			class="fa-sharp fa-solid fa-house" style="color: #ffffff;"></i>&ensp;Electronics</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+			data-bs-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<form class="form-inline mx-auto" role="search"
 					action="products.jsp">
@@ -261,3 +263,6 @@ List<Category> categoryList = catDao.getAllCategories();
 		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 	<script
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		
+		
+		

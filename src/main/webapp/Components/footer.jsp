@@ -56,9 +56,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3 col-lg-3 col-xl-3">
-					<h5>COMPANY NAME</h5>
-					<p>Here you can use rows and columns to organize your footer
-						content. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					<h5>ELECTRONICS</h5>
+					<p>Dịch vụ điện máy không chỉ cung cấp sản phẩm chất lượng mà còn đem đến sự tiện nghi và nâng cao trải nghiệm sống hàng ngày của bạn.</p>
 				</div>
 				<div class="col-md-2 col-lg-2 col-xl-2 mx-auto">
 					<h5>TIN MỚI</h5>
@@ -82,7 +81,7 @@
 					</p>
 				</div>
 				<div class="col-md-3 col-lg-2 col-xl-2 mx-auto">
-					<h5>Liên kết</h5>
+					<h5>LIÊN KẾT</h5>
 					<p>
 						<a href="#">Tài khoản</a>
 					</p>
@@ -102,7 +101,7 @@
 						<i class="fas fa-home mr-3"></i> Hà Đông, Hà Nội, Việt Nam
 					</p>
 					<p>
-						<i class="fas fa-envelope mr-3"></i> info@example.com
+						<i class="fas fa-envelope mr-3"></i> electronics@gmail.com
 					</p>
 					<p>
 						<i class="fas fa-phone mr-3"></i> + 01 234 567 88
@@ -125,7 +124,7 @@
 			<hr>
 			<div class="row">
 				<div class="col-md-12 text-center">
-					<p>© 2024 Copyright: MDBootstrap.com</p>
+					<p>© 2024 Copyright: electronics.com</p>
 				</div>
 			</div>
 		</div>

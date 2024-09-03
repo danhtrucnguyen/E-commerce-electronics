@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.eazydeals.entities.Order;
-
+import com.eazydeals.entities.Product;
 public class OrderDao {
 	
 	private Connection con;
@@ -124,4 +124,7 @@ public class OrderDao {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
 }
